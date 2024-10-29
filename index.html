@@ -1,0 +1,68 @@
+g<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch-Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="cart.html">Cart</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Signup</a>
+        <a href="forgot-password.html">Forgot Password?</a>
+
+    </nav>
+    <h1>Welcome to the Watch Shop</h1>
+    <p>Here are some watches you can add to your cart:</p>
+
+    <section id="product-list">
+        <div class="product">
+            <img src="watch4.jpeg" alt="Classic Watch" onclick="openModal('Titan Men\'s Minimalist Zen Watch', '₹3375', 'watch4.jpeg')">
+            <h2>Titan Men's Minimalist Zen Watch</h2>
+            <p>Price: ₹3375</p>
+        </div>
+        <div class="product">
+            <img src="watch1.jpeg" alt="Titanic Watch" onclick="openModal('Titan Men\'s Classic Watch', '₹3165', 'watch1.jpeg')">
+            <h2>Titan Men's Classic Watch</h2>
+            <p>Price: ₹3165</p>
+        </div>
+        <div class="product">
+            <img src="watch3.jpeg" alt="Luxury Watch" onclick="openModal('Titan Neo Splash Blue Dial', '₹7995', 'watch3.jpeg')">
+            <h2>Titan Neo Splash Blue Dial</h2>
+            <p>Price: ₹7995</p>
+        </div>
+        <div class="product">
+            <img src="watch5.jpeg" alt="Luxury Watch" onclick="openModal('Titan Mens Timeless Style Watch', '₹3995', 'watch5.jpeg')">
+            <h2>Titan Men's Timeless Style Watch</h2>
+            <p>Price: ₹3995</p>
+        </div>
+        <div class="product">
+            <img src="watch6.jpeg" alt="Luxury Watch" onclick="openModal('Titan Edge Baseline Grey Dial', '₹3995', 'watch6.jpeg')">
+            <h2>Titan Edge Baseline Grey Dial</h2>
+            <p>Price: ₹3995</p>
+        </div>
+        <div class="product">
+            <img src="watch7.jpeg" alt="Luxury Watch" onclick="openModal('Titan Quartz Multifunction Blue Dial', '₹3995', 'watch7.jpeg')">
+            <h2>Titan Quartz Multifunction Blue Dial</h2>
+            <p>Price: ₹3995</p>
+        </div>
+    </section>
+
+    <div id="notification"></div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <img id="modal-image" src="" alt="" style="width: 100%; border-radius: 5px; margin-bottom: 15px;">
+            <p id="modal-price"></p>
+            <button class="button" id="add-to-cart" onclick="addToCartFromModal()">Add to Cart</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

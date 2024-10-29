@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1 {
+            color: #3BBA9C;
+            margin: 20px 0;
+        }
+        nav {
+            background-color: #3BBA9C;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        #cart-items {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            text-align: left;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .cart-item img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        .cart-item p {
+            flex-grow: 1;
+            margin: 0;
+        }
+        .service-info {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            text-align: left;
+            border-top: 2px solid #3BBA9C;
+            padding-top: 10px;
+        }
+
+        .service-info div {
+            margin: 10px 0;
+        }
+
+        .icon {
+            width: 20px; /* Adjust this value for desired size */
+            height: 20px; /* Maintain aspect ratio */
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .remove-button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .remove-button:hover {
+            background-color: #ff3333;
+        }
+        .empty-cart {
+            color: #999;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+    <h1>Your Cart</h1>
+
+    <div id="cart-items"></div>
+
+    <div class="service-info">
+        <div><img src="deliveryicon.png" alt="Delivery Icon" class="icon">Delivery Availability: Dispatch By 27th Oct 2024</div>
+        <div><img src="deliveryarrowicon.png" alt="Delivery Arrow Icon" class="icon">24 Months Warranty</div>
+        <div><img src="freeshipping.png" alt="Free Shipping" class="icon">Free Shipping Countrywide</div>
+        <div><img src="easyreturn.png" alt="Easy Return" class="icon">Easy Return</div>
+        <div><img src="payondelivery.png" alt="Pay on Delivery" class="icon">Pay on Delivery Available</div>
+        <div><img src="watchdelivery.jpeg" alt="Serviced Across India" class="icon">Serviced Across India</div>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function displayCartItems() {
+            const cartItemsDiv = document.getElementById('cart-items');
+            cartItemsDiv.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = '<p class="empty-cart">Your cart is empty.</p>';
+            } else {
+                cart.forEach((item, index) => {
+                    cartItemsDiv.innerHTML += `
+                        <div class="cart-item">
+                            <img src="${item.image}" alt="${item.name}">
+                            <p>${item.name} - ${item.price}</p>
+                            <button class="remove-button" onclick="removeFromCart(${index})">Remove</button>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCartItems();
+        }
+
+        displayCartItems();
+    </script>
+</body>
+</html>
